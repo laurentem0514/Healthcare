@@ -1,0 +1,15 @@
+﻿@using MvcDoctors.Models.Doctors
+@model List<Doctor>
+
+@{ 
+    var doctors = Model.Take(4);
+}
+
+<ul>
+    @foreach (var doctor in doctors)
+    {
+        <li>
+            <a href="#"><img src="@doctor.ImageUrl" alt="" width="65"></a>
+        </li>
+    }
+</ul>

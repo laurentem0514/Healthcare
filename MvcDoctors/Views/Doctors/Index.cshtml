@@ -1,0 +1,49 @@
+﻿@using MvcDoctors.Models.Doctors
+@model List<Doctor>
+
+@{
+    ViewBag.Title = "Index";
+   List<Doctor> doctors = Model;
+}
+
+<h2>Meet Your Doctor</h2>
+<h3>All of our board-certified Doctors have over 10 years of experience and have been awarded "Certificate of Excellence" by NYS for patient-driven care. </h3>
+
+<div class="row">
+    @foreach (Doctor doctor in doctors)
+    {
+        <div class="col-md-4">
+            @doctor.DoctorName 
+            <div>
+                <img src="@doctor.ImageUrl" alt="" width="100" />
+            </div>
+
+            @if (doctor.ProceduresProvided != null)
+            {
+                <div>
+                    Providor of services including:
+                    <ul>
+                        @foreach (Procedure procedure in doctor.ProceduresProvided)
+                    {
+                            <li>@procedure.Name</li>
+                        }
+                    </ul>
+                </div>
+            }
+            
+            @if (doctor.Location != null)
+            {
+                <div>
+                    Accepting new patients at:
+                    <ul>
+                        @foreach (PracticeLocation location in doctor.Location)
+                        {
+                            <li>@location.FullName</li>
+                        }
+                    </ul>
+                </div>
+            }
+
+    </div>
+}
+</div>
